@@ -1,0 +1,668 @@
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  fake-ip-filter:
+    - '+.lan'
+    - '*'
+    - '+.local'
+    - '+.cmpassport.com'
+    - 'id6.me'
+    - 'open.e.189.cn'
+    - 'mdn.open.wo.cn'
+    - 'opencloud.wostore.cn'
+    - 'auth.wosms.cn'
+    - '+.10099.com.cn'
+
+proxy-providers:
+  subscribe:
+    type: http
+    url: "https://rgergergergerg6555.saojc.xyz/api/v1/client/subscribe?token=31220a0020e858d75d31984a0758f35c"
+    interval: 86400
+    path: ./providers/subscribe.yaml
+    health-check:
+      enable: true
+      interval: 300
+      url: http://1.1.1.1/generate_204
+
+proxy-groups:
+  - name: "手动切换"
+    type: select
+    use:
+      - subscribe
+
+  - name: "国外网站"
+    type: select
+    proxies:
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+
+  - name: "国际媒体"
+    type: select
+    proxies:
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+
+  - name: "微软服务"
+    type: select
+    proxies:
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+      - DIRECT
+
+  - name: "谷歌服务"
+    type: select
+    proxies:
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+
+  - name: "电报消息"
+    type: select
+    proxies:
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+
+  - name: "推特消息"
+    type: select
+    proxies:
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+
+  - name: "AI"
+    type: select
+    proxies:
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+
+  - name: "游戏平台"
+    type: select
+    proxies:
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+      - DIRECT
+
+  - name: "Emby"
+    type: select
+    proxies:
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+
+  - name: "Spotify"
+    type: select
+    proxies:
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+
+  - name: "兜底分流"
+    type: select
+    proxies:
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+      - DIRECT
+
+  - name: "香港节点"
+    type: url-test
+    use:
+      - subscribe
+    filter: "(?i)🇭🇰|香港|\b(HK|Hong)\b"
+    interval: 300
+
+  - name: "美国节点"
+    type: url-test
+    use:
+      - subscribe
+    filter: "(?i)🇺🇸|美国|洛杉矶|圣何塞|\b(US|United States)\b"
+    interval: 300
+
+  - name: "狮城节点"
+    type: url-test
+    use:
+      - subscribe
+    filter: "(?i)🇸🇬|新加坡|狮|\b(SG|Singapore)\b"
+    interval: 300
+
+  - name: "日本节点"
+    type: url-test
+    use:
+      - subscribe
+    filter: "(?i)🇯🇵|日本|东京|\b(JP|Japan)\b"
+    interval: 300
+
+  - name: "台湾节点"
+    type: url-test
+    use:
+      - subscribe
+    filter: "(?i)🇨🇳|🇹🇼|台湾|\b(TW|Tai|Taiwan)\b"
+    interval: 300
+
+rule-providers:
+  Lan:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Lan.list
+  Reject:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Reject.list
+  Apple:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Apple.list
+  AppleProxy:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/AppleProxy.list
+  Microsoft:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Microsoft.list
+  OneDrive:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/OneDrive.list
+  Github:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Github.list
+  Youtube:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/YouTube.list
+  Google:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Google.list
+  Telegram:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Telegram.list
+  Twitter:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Twitter.list
+  Steam:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Steam.list
+  Epic:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Epic.list
+  AI:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/AI.list
+  Emby:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Emby.list
+  Spotify:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Spotify.list
+  Bahamut:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Bahamut.list
+  Netflix:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Netflix.list
+  Disney:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Disney.list
+  PrimeVideo:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/PrimeVideo.list
+  HBO:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/HBO.list
+  TikTok:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/TikTok.list
+  ProxyGFW:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/ProxyGFW.list
+
+rules:
+  - DOMAIN,litvpc-hichannel.cdn.hinet.net,台湾节点
+  - DOMAIN,4gtvfree-cds.cdn.hinet.net,台湾节点
+  - DOMAIN,4gtvfree-mozai.4gtv.tv,台湾节点
+  - DOMAIN,4gtvfreepc-cds.cdn.hinet.net,台湾节点
+  - DOMAIN,ntd-tgc.cdn.hinet.net,台湾节点
+  - DOMAIN,smart.pendy.dpdns.org,美国节点
+  - DOMAIN,sport.pendy.dpdns.org,美国节点
+  - DOMAIN,sdocker.livednow.dpdns.org,美国节点
+  - DOMAIN-SUFFIX,xptvhelper.link,DIRECT
+  - DOMAIN-SUFFIX,doubanio.com,DIRECT
+  - DOMAIN-SUFFIX,aliyundrive.com,DIRECT
+  - DOMAIN-SUFFIX,voicehub.top,DIRECT
+  - DOMAIN-SUFFIX,quark.cn,DIRECT
+  - DOMAIN-SUFFIX,189.cn,DIRECT
+  - DOMAIN-SUFFIX,qnqcdn.net,DIRECT
+  - DOMAIN-SUFFIX,xingya.com.cn,DIRECT
+  - DOMAIN-SUFFIX,ddys.pro,DIRECT
+  - DOMAIN-SUFFIX,agedm.org,DIRECT
+  - DOMAIN-SUFFIX,fanchenstatic.com,DIRECT
+  - DOMAIN-SUFFIX,bsgslb.cn,DIRECT
+  - DOMAIN-SUFFIX,bytetos.com,DIRECT
+  - DOMAIN-SUFFIX,douyinvod.com,DIRECT
+  - DOMAIN-SUFFIX,byteimg.com,DIRECT
+  - DOMAIN-SUFFIX,xhscdn.com,DIRECT
+  - DOMAIN-SUFFIX,bdxiguastatic.com,DIRECT
+  - DOMAIN-SUFFIX,zshtys888.com,DIRECT
+  - DOMAIN-SUFFIX,mcloud.139.com,DIRECT
+  - DOMAIN-SUFFIX,libvio.cloud,DIRECT
+  - DOMAIN-SUFFIX,anfuns.org,DIRECT
+  - DOMAIN-SUFFIX,bytegiftia.top,DIRECT
+  - DOMAIN-SUFFIX,lenovo.com.cn,DIRECT
+  - DOMAIN-SUFFIX,video.iqiyi.com,DIRECT
+  - DOMAIN-SUFFIX,qitu-zuida.com,DIRECT
+  - DOMAIN-SUFFIX,ibytedtos.com,DIRECT
+  - DOMAIN-SUFFIX,1ljx.com,DIRECT
+  - DOMAIN-SUFFIX,smtcdns.com,DIRECT
+  - DOMAIN-SUFFIX,novipnoad.net,DIRECT
+  - DOMAIN-SUFFIX,thehanju.com,DIRECT
+  - DOMAIN-SUFFIX,vvddoo.com,DIRECT
+  - DOMAIN-SUFFIX,ctyunxs.cn,DIRECT
+  - DOMAIN-SUFFIX,115.com,DIRECT
+  - DOMAIN-SUFFIX,uc.cn,DIRECT
+  - DOMAIN-SUFFIX,xiaoya.pro,DIRECT
+  - DOMAIN-SUFFIX,mogg.top,DIRECT
+  - DOMAIN-SUFFIX,wogg.one,DIRECT
+  - DOMAIN-SUFFIX,duopan.fun,DIRECT
+  - DOMAIN-SUFFIX,bilivideo.com,DIRECT
+  - DOMAIN-SUFFIX,douyincdn.com,DIRECT
+  - DOMAIN-SUFFIX,douyinpic.com,DIRECT
+  - DOMAIN-SUFFIX,douyucdn.cn,DIRECT
+  - DOMAIN-SUFFIX,douyucdn2.cn,DIRECT
+  - DOMAIN-SUFFIX,huya.com,DIRECT
+  - DOMAIN-SUFFIX,msstatic.com,DIRECT
+  - DOMAIN-SUFFIX,akamaized.net,DIRECT
+  - DOMAIN-SUFFIX,larksuitecdn.com,DIRECT
+  - DOMAIN-SUFFIX,zxzja.com,DIRECT
+  - DOMAIN-SUFFIX,ffzy,DIRECT
+  - DOMAIN-SUFFIX,eimuer.tv,DIRECT
+  - DOMAIN-SUFFIX,eimuer.xyz,DIRECT
+  - DOMAIN-SUFFIX,yishihui.com,DIRECT
+  - DOMAIN-SUFFIX,qrstt.com,DIRECT
+  - DOMAIN-SUFFIX,noop44.com,DIRECT
+  - DOMAIN-SUFFIX,bxgbnet.com,DIRECT
+  - DOMAIN-SUFFIX,xxya88.com,DIRECT
+  - DOMAIN-SUFFIX,stuuvwy.com,DIRECT
+  - DOMAIN-SUFFIX,xingchongwang.com,DIRECT
+  - DOMAIN-SUFFIX,uvvv77.com,DIRECT
+  - DOMAIN-SUFFIX,jklnopq.com,DIRECT
+  - DOMAIN-SUFFIX,qdhdcate.com,DIRECT
+  - DOMAIN-SUFFIX,ghij11.com,DIRECT
+  - DOMAIN-SUFFIX,tlkqc.com,DIRECT
+  - DOMAIN-SUFFIX,xaab57.com,DIRECT
+  - DOMAIN-SUFFIX,nopqq.vip,DIRECT
+  - DOMAIN-SUFFIX,uvwwx.vip,DIRECT
+  - DOMAIN-SUFFIX,pqqrs.vip,DIRECT
+  - DOMAIN-SUFFIX,qrssv.com,DIRECT
+  - DOMAIN-SUFFIX,bfzypic.com,DIRECT
+  - DOMAIN-SUFFIX,bfllvip.com,DIRECT
+  - DOMAIN-SUFFIX,fghjklm.com,DIRECT
+  - DOMAIN-SUFFIX,ijkklmn.com,DIRECT
+  - DOMAIN-SUFFIX,longshengtea.com,DIRECT
+  - DOMAIN-SUFFIX,stuuv.vip,DIRECT
+  - DOMAIN-SUFFIX,qrrs56.com,DIRECT
+  - DOMAIN-SUFFIX,wwxy0.com,DIRECT
+  - DOMAIN-SUFFIX,fentvoss.com,DIRECT
+  - DOMAIN-SUFFIX,ijkkl.vip,DIRECT
+  - DOMAIN-SUFFIX,abcce.vip,DIRECT
+  - DOMAIN-SUFFIX,mmnn34.com,DIRECT
+  - DOMAIN-SUFFIX,vwxx78.com,DIRECT
+  - DOMAIN-SUFFIX,stttu.vip,DIRECT
+  - DOMAIN-SUFFIX,tuvvv.vip,DIRECT
+  - DOMAIN-SUFFIX,ijkmnno.com,DIRECT
+  - DOMAIN-SUFFIX,deefg.vip,DIRECT
+  - DOMAIN-SUFFIX,lmnoprs.com,DIRECT
+  - DOMAIN-SUFFIX,yhzybf.com,DIRECT
+  - DOMAIN-SUFFIX,wgslsw.com,DIRECT
+  - DOMAIN-SUFFIX,stuv67.com,DIRECT
+  - DOMAIN-SUFFIX,hjjk22.com,DIRECT
+  - DOMAIN-SUFFIX,jkkl23.com,DIRECT
+  - DOMAIN-SUFFIX,xlzyd.com,DIRECT
+  - DOMAIN-SUFFIX,daayee.com,DIRECT
+  - DOMAIN-SUFFIX,monidai.com,DIRECT
+  - DOMAIN-SUFFIX,hdslb.pro,DIRECT
+  - DOMAIN-SUFFIX,jisuimage.com,DIRECT
+  - DOMAIN-SUFFIX,toutiaoimg.com,DIRECT
+  - DOMAIN-SUFFIX,yzzyimages.com,DIRECT
+  - DOMAIN-SUFFIX,alicdn.com,DIRECT
+  - DOMAIN-SUFFIX,ykimg.com,DIRECT
+  - DOMAIN-SUFFIX,netease.com,DIRECT
+  - DOMAIN-SUFFIX,gtimg.cn,DIRECT
+  - DOMAIN-SUFFIX,meituan.net,DIRECT
+  - DOMAIN-SUFFIX,iqiyipic.com,DIRECT
+  - DOMAIN-SUFFIX,loli.net,DIRECT
+  - DOMAIN-SUFFIX,360buyimg.com,DIRECT
+  - DOMAIN-SUFFIX,baidu.com,DIRECT
+  - DOMAIN-KEYWORD,bbffvip.com,DIRECT
+  - DOMAIN-KEYWORD,rrcdnbf,DIRECT
+  - DOMAIN-KEYWORD,jisu.com,DIRECT
+  - DOMAIN-KEYWORD,ukzy.ukubf,DIRECT
+  - DOMAIN-KEYWORD,hiij,DIRECT
+  - DOMAIN-KEYWORD,v.cdnlz,DIRECT
+  - DOMAIN-KEYWORD,shes,DIRECT
+  - DOMAIN-KEYWORD,cdn.wls,DIRECT
+  - DOMAIN-KEYWORD,cdn.wlcdn,DIRECT
+  - DOMAIN-KEYWORD,huya,DIRECT
+  - DOMAIN-KEYWORD,subo,DIRECT
+  - DOMAIN-KEYWORD,play.modujx,DIRECT
+  - IP-CIDR,8.41.4.0/24,DIRECT,no-resolve
+  - IP-CIDR,43.142.232.217/32,DIRECT,no-resolve
+  - IP-CIDR,110.41.171.181/32,DIRECT,no-resolve
+  - IP-CIDR,49.235.143.104/32,DIRECT,no-resolve
+  - IP-CIDR,218.22.23.189/32,DIRECT,no-resolve
+  - IP-CIDR,117.68.35.135/32,DIRECT,no-resolve
+  - IP-CIDR,218.22.23.229/32,DIRECT,no-resolve
+  - IP-CIDR,117.68.35.139/32,DIRECT,no-resolve
+  - IP-CIDR,163.123.192.184/32,DIRECT,no-resolve
+  - IP-CIDR,148.59.74.50/32,DIRECT,no-resolve
+  - IP-CIDR,205.178.182.17/32,DIRECT,no-resolve
+  - IP-CIDR,163.123.192.169/32,DIRECT,no-resolve
+  - IP-CIDR,163.123.192.68/32,DIRECT,no-resolve
+  - IP-CIDR,163.123.192.182/32,DIRECT,no-resolve
+  - IP-CIDR,205.178.182.8/32,DIRECT,no-resolve
+  - IP-CIDR,163.123.192.108/32,DIRECT,no-resolve
+  - IP-CIDR,163.123.192.29/32,DIRECT,no-resolve
+  - IP-CIDR,205.178.182.52/32,DIRECT,no-resolve
+  - IP-CIDR,163.123.192.17/32,DIRECT,no-resolve
+  - DOMAIN,sdocker.livednow.dpdns.org,DIRECT
+  - DOMAIN,infuseku.xyz,DIRECT
+  - DOMAIN,gateway.icloud.com,DIRECT
+  - DOMAIN,metrics.icloud.com,DIRECT
+  - DOMAIN,image.tmdb.org,DIRECT
+  - DOMAIN,dandanplay.net,DIRECT
+  - DOMAIN,mihdr.top,DIRECT
+  - DOMAIN,anime.girigirilove.com,DIRECT
+  - DOMAIN,love.girigirilove.com,DIRECT
+  - DOMAIN,m3u8.girigirilove.com,DIRECT
+  - DOMAIN,api.9cec79d.com,DIRECT
+  - DOMAIN,wjm.kemfsj.com,DIRECT
+  - DOMAIN,www.4k-av.com,DIRECT
+  - DOMAIN,i0.hdslb.com,DIRECT
+  - DOMAIN,www.leijing.xyz,DIRECT
+  - DOMAIN,xzys.fun,DIRECT
+  - DOMAIN,www.nanf.cc,DIRECT
+  - DOMAIN,yydsys.top,DIRECT
+  - DOMAIN,woog.nxog.eu.org,DIRECT
+  - DOMAIN,yunpan8.cc,DIRECT
+  - DOMAIN,c.xpgtv.net,DIRECT
+  - DOMAIN,slink.ltd,DIRECT
+  - DOMAIN,lemonlive.deno.dev,DIRECT
+  - DOMAIN,www.libvio.cc,DIRECT
+  - DOMAIN,image.zhihuishu.com,DIRECT
+  - DOMAIN,presale.111.com.cn,DIRECT
+  - DOMAIN,hdmoli.pro,DIRECT
+  - DOMAIN,v.damoli.pro,DIRECT
+  - DOMAIN,www.xlys01.com,DIRECT
+  - DOMAIN,saohuo.tv,DIRECT
+  - DOMAIN,hhjx.hhplayer.comundefined,DIRECT
+  - DOMAIN,om.tc.qq.com,DIRECT
+  - DOMAIN,cme-video.vod-qcloud.com,DIRECT
+  - DOMAIN,hhjx.hhplayer.com,DIRECT
+  - DOMAIN,www.novipnoad.net,DIRECT
+  - DOMAIN,www.hanjukankan.com,DIRECT
+  - DOMAIN,glzx.thekutv.com,DIRECT
+  - DOMAIN,qiniu.rongjuwh.cn,DIRECT
+  - DOMAIN,app.whjzjx.cn,DIRECT
+  - DOMAIN,u.shytkjgs.com,DIRECT
+  - DOMAIN,www.czzyvideo.com,DIRECT
+  - DOMAIN,qimgs.qunarzz.com,DIRECT
+  - DOMAIN,lf16-fe.resso.me,DIRECT
+  - DOMAIN,t001.czzy.fun,DIRECT
+  - DOMAIN,vunyundun.czys.art,DIRECT
+  - DOMAIN,dc.xhscdn.com,DIRECT
+  - DOMAIN,mdn.alipayobjects.com,DIRECT
+  - DOMAIN,op.ysdqjs.cn,DIRECT
+  - DOMAIN,www.subaibaiys.com,DIRECT
+  - DOMAIN,360zy.com,DIRECT
+  - DOMAIN,vod.lyhuicheng.com,DIRECT
+  - DOMAIN,www.mdzyapi.com,DIRECT
+  - DOMAIN,2bzfvku2xwu7.com,DIRECT
+  - DOMAIN,n9ihkvv1ytjr.com,DIRECT
+  - DOMAIN,0cicgw0mte7y.com,DIRECT
+  - DOMAIN,r5oa1oqwh6gz.com,DIRECT
+  - DOMAIN,knfuzimvbmwr.com,DIRECT
+  - DOMAIN,ucul8pjt6v6h.com,DIRECT
+  - DOMAIN,5pvheva17etb.com,DIRECT
+  - DOMAIN,k6qgunhk9wuk.com,DIRECT
+  - DOMAIN,0uxzzy8thov3.com,DIRECT
+  - DOMAIN,5dagx9am9sai.com,DIRECT
+  - DOMAIN,omgyesityyhl.com,DIRECT
+  - DOMAIN,eucjzvub6vhr.com,DIRECT
+  - DOMAIN,tficf2xx0qxr.com,DIRECT
+  - DOMAIN,zqmdvefdijjx.com,DIRECT
+  - DOMAIN,jzuqfavoibww.com,DIRECT
+  - DOMAIN,in1eab44tnda.com,DIRECT
+  - DOMAIN,nfysfaemv1m2.com,DIRECT
+  - DOMAIN,rfjyb3bu5j0r.com,DIRECT
+  - DOMAIN,wjmgijixqcbc.com,DIRECT
+  - DOMAIN,jvgcazuedspp.com,DIRECT
+  - DOMAIN,fmxjkp6ekzcg.com,DIRECT
+  - DOMAIN,zea35s3nhdbn.com,DIRECT
+  - DOMAIN,zehnaxihujfi.com,DIRECT
+  - DOMAIN,0nzuqy0k3c35.com,DIRECT
+  - DOMAIN,yvocwep63nev.com,DIRECT
+  - DOMAIN,navogkbbnjl4.com,DIRECT
+  - DOMAIN,xgwr4phkkafo.com,DIRECT
+  - DOMAIN,om43531gxybq.com,DIRECT
+  - DOMAIN,3lky1u69bdx2.com,DIRECT
+  - DOMAIN,438pnr4dyywt.com,DIRECT
+  - DOMAIN,mdghhsgc4iiy.com,DIRECT
+  - DOMAIN,m3u8.hmrvideo.com,DIRECT
+  - DOMAIN,hw8.live,DIRECT
+  - DOMAIN,selfcdn.simaguo.com,DIRECT
+  - DOMAIN,m3u.nikanba.live,DIRECT
+  - DOMAIN,www.fuju2024.cc,DIRECT
+  - DOMAIN,image.jinyingimage.com,DIRECT
+  - DOMAIN,jinyingzy.com,DIRECT
+  - DOMAIN,c.baisiweiting.com,DIRECT
+  - DOMAIN,hd.ijycnd.com,DIRECT
+  - DOMAIN,pic.okzy.xyz,DIRECT
+  - DOMAIN,wakdj.com,DIRECT
+  - DOMAIN,zpsps.com,DIRECT
+  - DOMAIN,iqyi.xiaohuangrentv.com,DIRECT
+  - DOMAIN,pic.niuniuzy.info,DIRECT
+  - DOMAIN,cj.yayazy.net,DIRECT
+  - DOMAIN,cj.vodimg.top,DIRECT
+  - DOMAIN,pic.picturecdn.com,DIRECT
+  - DOMAIN,tlkqc.com,DIRECT
+  - DOMAIN,api.ukuapi.com,DIRECT
+  - DOMAIN,hhzyapi.com,DIRECT
+  - DOMAIN,play.hhuus.com,DIRECT
+  - DOMAIN,p.hhwenjian.com,DIRECT
+  - DOMAIN,jszyapi.com,DIRECT
+  - DOMAIN,snzypic.vip,DIRECT
+  - DOMAIN,www.imgikzy.com,DIRECT
+  - DOMAIN,kkzycdn.com,DIRECT
+  - DOMAIN,bfikuncdn.com,DIRECT
+  - DOMAIN,cj.lziapi.com,DIRECT
+  - DOMAIN,img.lzzyimg.com,DIRECT
+  - DOMAIN,bfzyapi.com,DIRECT
+  - DOMAIN,www.hongniuzy2.com,DIRECT
+  - DOMAIN,hn.bfvvs.com,DIRECT
+  - DOMAIN,hnts.ymuuy.com,DIRECT
+  - DOMAIN,caijl.kczyapi.com,DIRECT
+  - DOMAIN,sdzyapi.com,DIRECT
+  - DOMAIN,m3u8.apiyhzy.com,DIRECT
+  - DOMAIN,pic.jegms.com,DIRECT
+  - DOMAIN,collect.wolongzyw.com,DIRECT
+  - DOMAIN,pic.wlongimg.com,DIRECT
+  - DOMAIN,p2100.net,DIRECT
+  - DOMAIN,api.wujinapi.com,DIRECT
+  - DOMAIN,v5.xyaa88.com,DIRECT
+  - DOMAIN,play.subokk.com,DIRECT
+  - DOMAIN,caiji.moduapi.cc,DIRECT
+  - DOMAIN,www.mdzypic.com,DIRECT
+  - DOMAIN,ok.zuidapic.com,DIRECT
+  - DOMAIN,zuidazy.me,DIRECT
+  - DOMAIN,xinlangtupian.com,DIRECT
+  - DOMAIN,play.xluuss.com,DIRECT
+  - DOMAIN,img.kuaichezy.net,DIRECT
+  - DOMAIN,puui.qpic.cn,DIRECT
+  - DOMAIN,hhmage.com,DIRECT
+  - DOMAIN,wework.qpic.cn,DIRECT
+  - DOMAIN,pic.rmb.bdstatic.com,DIRECT
+  - DOMAIN,mdn.alipay.com,DIRECT
+  - DOMAIN,fc.sinaimg.cn,DIRECT
+  - DOMAIN,img.moegirl.org.cn,DIRECT
+  - DOMAIN,pic8.iqiyipic.com,DIRECT
+  - DOMAIN,p0.qhimg.com,DIRECT
+  - DOMAIN,api.zaqohu.com,DIRECT
+  - DOMAIN,images.67c6c7a.com,DIRECT
+  - DOMAIN,pic7.58cdn.com.cn,DIRECT
+  - DOMAIN,help-ol.bj.bcebos.com,DIRECT
+  - DOMAIN,pic1.imgyzzy.com,DIRECT
+  - DOMAIN,get.sogou.com,DIRECT
+  - DOMAIN,open.bigmodel.cn,DIRECT
+  - DOMAIN,vcover-vt-pic.puui.qpic.cn,DIRECT
+  - DOMAIN,fs-im-kefu.7moor-fs1.com,DIRECT
+  - DOMAIN,img.image8899.net,DIRECT
+  - DOMAIN,img.picgo.net,DIRECT
+  - DOMAIN,pic3.yzzyimages.com,DIRECT
+  - DOMAIN,647bc185.szrtcpa.com,DIRECT
+  - DOMAIN,img.98ha.com,DIRECT
+  - DOMAIN,challenge.rivers.chaitin.cn,DIRECT
+  - DOMAIN,image.maimn.com,DIRECT
+  - DOMAIN,img.liangzipic.com,DIRECT
+  - DOMAIN,imagev2.xmcdn.com,DIRECT
+  - DOMAIN,pic.imgdb.cn,DIRECT
+  - DOMAIN,pic3.yzzyimg.online,DIRECT
+  - DOMAIN,wx4.sinaimg.cn,DIRECT
+  - DOMAIN,img.jisuimage.com,DIRECT
+  - DOMAIN,pic.wujinpp.com,DIRECT
+  - DOMAIN,suboimage.com,DIRECT
+  - DOMAIN,img.ffzy888.com,DIRECT
+  - RULE-SET,Reject,REJECT
+  - RULE-SET,AI,AI
+  - RULE-SET,Github,微软服务
+  - RULE-SET,OneDrive,微软服务
+  - RULE-SET,Microsoft,微软服务
+  - RULE-SET,Youtube,谷歌服务
+  - RULE-SET,Google,谷歌服务
+  - RULE-SET,Twitter,推特消息
+  - RULE-SET,Telegram,电报消息
+  - RULE-SET,Steam,游戏平台
+  - RULE-SET,Epic,游戏平台
+  - RULE-SET,Emby,Emby
+  - RULE-SET,Bahamut,国际媒体
+  - RULE-SET,Netflix,国际媒体
+  - RULE-SET,Disney,国际媒体
+  - RULE-SET,PrimeVideo,国际媒体
+  - RULE-SET,HBO,国际媒体
+  - RULE-SET,TikTok,国际媒体
+  - RULE-SET,Spotify,Spotify
+  - RULE-SET,ProxyGFW,国外网站
+  - RULE-SET,AppleProxy,国外网站
+  - RULE-SET,Apple,DIRECT
+  - RULE-SET,Lan,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,兜底分流
