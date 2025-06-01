@@ -1,0 +1,192 @@
+mode: rule
+log-level: info
+dns:
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  skip-cert-verify: true
+proxies: [] # 自动交由 proxy-providers 管理
+proxy-providers:
+  subscription:
+    type: http
+    url: "https://rgergergergerg6555.saojc.xyz/api/v1/client/subscribe?token=37c1006215aa9655924032a6f86d2ecf"
+    interval: 3600
+    path: ./provider/subscribe.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+    benchmark-url: http://www.gstatic.com/generate_204
+
+proxy-groups:
+  - include-all: true
+    name: 节点信息
+    type: select
+
+  - name: "Proxy"
+    type: select
+    proxies:
+      - 香港手动
+      - 香港-nonIEPL
+    url: http://www.gstatic.com/generate_204
+    interval: 120
+
+  - name: "aptv"
+    type: select
+    proxies:
+      - 香港IEPL
+      - 香港-nonIEPL
+
+  - name: "香港手动"
+    type: select
+    use:
+      - subscription
+    filter: '(?i)HK|HongKong|Hong Kong|香港'
+  - name: "香港IEPL"
+    type: url-test
+    use:
+      - subscription
+    filter: '(?i)HK IEPL|HongKong IEPL|Hong Kong IEPL|香港IEPL'
+    interval: 120
+
+  - name: "香港-nonIEPL"
+    type: url-test
+    use:
+      - subscription
+    filter: '(?i)(HK|HongKong|Hong Kong|香港)(?!.*IEPL)'
+    url: http://www.gstatic.com/generate_204
+    interval: 120
+
+  - name: "台湾自动"
+    type: url-test
+    use:
+      - subscription
+    filter: '(?i)TW|Taiwan|Tai wan|台湾'
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+
+  - name: "美国自动"
+    type: url-test
+    use:
+      - subscription
+    filter: '(?i)US|UnitedStates|United States|America|美国'
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+
+
+
+rule-providers:
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+  apple:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+  google:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+  direct:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+  OpenAI:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml"
+    path: ./ruleset/OpenAI.yaml
+    interval: 86400
+  xptv:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/fangkuia/XPTV/main/X/clash.yaml"
+    path: ./ruleset/xptv.yaml
+    interval: 86400
+
+
+rules:
+# xptv开始
+  - DOMAIN-KEYWORD,cy5ti3hzzuit.com,DIRECT
+  - DOMAIN-KEYWORD,wogg,DIRECT
+  - DOMAIN-KEYWORD,wogg,DIRECT
+  - APP,com.zy.XPTV,DIRECT
+  - PROCESS-NAME,XPTV,DIRECT
+# Ai
+  - RULE-SET,OpenAI,美国自动
+# JUDY-tvb直播
+  - DOMAIN,litvpc-hichannel.cdn.hinet.net,台湾自动
+  - DOMAIN,4gtvfree-cds.cdn.hinet.net,台湾自动
+  - DOMAIN,4gtvfree-mozai.4gtv.tv,台湾自动
+  - DOMAIN,4gtvfreepc-cds.cdn.hinet.net,台湾自动
+  - DOMAIN-KEYWORD,4gtv,台湾自动
+  - DOMAIN,ntd-tgc.cdn.hinet.net,台湾自动
+  - DOMAIN,smart.pendy.dpdns.org,美国自动
+  - DOMAIN,sport.pendy.dpdns.org,美国自动
+  - DOMAIN,sdocker.livednow.dpdns.org,美国自动
+  - PROCESS-NAME,aptv,aptv
+  - RULE-SET,xptv,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - GEOIP,google,Proxy
+#  - RULE-SET,google,Proxy
+  - RULE-SET,proxy,Proxy
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,DIRECT
+  - RULE-SET,telegramcidr,Proxy
+  - GEOSITE,cn,DIRECT
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - PROCESS-NAME,com.fongmi.andriod.tv,aptv
+  - MATCH,DIRECT
