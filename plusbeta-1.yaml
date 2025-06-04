@@ -1,5 +1,5 @@
 ;1、域名组
-ruleset=https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/proxy.yaml,[]香港-nonIEPL
+ruleset=llg,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/proxy.yaml，香港-nonIEPL
 
 ;3、节点组
 custom_proxy_group=香港手动`url-test`(HK|HongKong|Hong Kong|香港)`http://www.gstatic.com/generate_204`180,5,100
