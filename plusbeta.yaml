@@ -1,37 +1,41 @@
 ;1、域名组
-ruleset=llg,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/proxy.yaml,[]香港-nonIEPL
-ruleset=judy-us,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/judy-us.yaml,[]美国自动
-ruleset=judy-tw,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/judy-TW.yaml,[]台湾自动
+ruleset=✈️ 流量光,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/proxy.yaml
+ruleset=📺 Judy-us,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/judy-us.yaml
+ruleset=📺 Judy-tw,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/judy-TW.yaml
 ruleset=✨ OpenAI,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml
-ruleset=📺 XPTV,https://raw.githubusercontent.com/fangkuia/XPTV/main/X/clash.yaml,[]DIRECT
-ruleset=🔍 Google,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt,[]香港-nonIEPL
-ruleset=🌍 Proxy,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt,[]香港-nonIEPL
-ruleset=🚫 reject,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt,[]REJECT
-ruleset=🍏 iCloud,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt,[]DIRECT
-ruleset=🍎 Apple,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt,[]DIRECT
-ruleset=➡️ Direct,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt,[]DIRECT
-ruleset=🏠 Private,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt,[]DIRECT
-ruleset=✈️ TelegramCIDR,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt,[]香港-nonIEPL
-ruleset=🇨🇳 CNCIDR,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt,[]DIRECT
-ruleset=🏡 LANCIDR,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt,[]DIRECT
-ruleset=wogg,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/DIRECT.yaml,[]DIRECT
-ruleset=➡️ 国内,[]DIRECT
+ruleset=📺 XPTV,https://raw.githubusercontent.com/fangkuia/XPTV/main/X/clash.yaml
+ruleset=🔍 Google,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt
+ruleset=🌍 Proxy,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt
+ruleset=🚫 reject,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt
+ruleset=🍏 iCloud,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt
+ruleset=🍎 Apple,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt
+ruleset=➡️ Direct,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt
+ruleset=🏠 Private,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt
+ruleset=✈️ TelegramCIDR,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt
+ruleset=🇨🇳 CNCIDR,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt
+ruleset=🏡 LANCIDR,https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt
+ruleset=🧍‍♂️ wogg,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/DIRECT.yaml
+ruleset=🐟 漏网之鱼,[]DIRECT
 
 ;2、策略组（域名组-节点组）
-
-#custom_proxy_group=📺 XPTV`select`[]DIRECT
-#custom_proxy_group=✨ OpenAI`select`[]美国自动
-#custom_proxy_group=🇨🇳 CNCIDR`select`[]DIRECT
-#custom_proxy_group=🏡 LANCIDR`select`[]DIRECT
-#custom_proxy_group=🏠 Private`select`[]DIRECT
-#custom_proxy_group=➡️ Direct`select`[]DIRECT
-#custom_proxy_group=🚫 reject`select`[]REJECT
-#custom_proxy_group=🍎 Apple`select`[]DIRECT
-#custom_proxy_group=🍏 iCloud`select`[]DIRECT
-#custom_proxy_group=🔍 Google`select`[]香港-nonIEPL
-#custom_proxy_group=🌍 Proxy`select`[]香港-nonIEPL
-#custom_proxy_group=✈️ TelegramCIDR`select`[]香港-nonIEPL
-
+custom_proxy_group=✈️ 流量光`select`[]香港-nonIEPL
+custom_proxy_group=📺 XPTV`select`[]DIRECT
+custom_proxy_group=✨ OpenAI`select`[]美国自动
+custom_proxy_group=🇨🇳 CNCIDR`select`[]DIRECT
+custom_proxy_group=🏡 LANCIDR`select`[]DIRECT
+custom_proxy_group=🏠 Private`select`[]DIRECT
+custom_proxy_group=➡️ Direct`select`[]DIRECT
+custom_proxy_group=🚫 reject`select`[]REJECT
+custom_proxy_group=🍎 Apple`select`[]DIRECT
+custom_proxy_group=🍏 iCloud`select`[]DIRECT
+custom_proxy_group=🔍 Google`select`[]香港-nonIEPL
+custom_proxy_group=🌍 Proxy`select`[]香港-nonIEPL
+custom_proxy_group=✈️ TelegramCIDR`select`[]香港-nonIEPL
+custom_proxy_group=📺 Judy-us`select`[]美国自动
+custom_proxy_group=📺 Judy-tw`select`[]台湾自动
+custom_proxy_group=✈️ TelegramCIDR`select`[]香港-nonIEPL
+custom_proxy_group=🧍‍♂️ wogg`select`[]DIRECT
+custom_proxy_group=🐟 漏网之鱼`select`[]DIRECT
 
 ;3、节点组
 custom_proxy_group=香港手动`url-test`(HK|HongKong|Hong Kong|香港)`http://www.gstatic.com/generate_204`180,5,100
