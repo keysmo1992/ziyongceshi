@@ -1,0 +1,87 @@
+;1、域名组
+ruleset=✈️ 流量光,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/proxy.yaml
+ruleset=📺 Judy-us,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/judy-us.yaml
+ruleset=📺 Judy-tw,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/judy-TW.yaml
+ruleset=📺 XPTV,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/xptv.yaml
+ruleset=🧍‍♂️ wogg,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/DIRECT.yaml
+;ruleset=✨ ChatGPT,https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/ChatGPT.list
+;ruleset=✨ Copilot,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Copilot/Copilot.list
+;ruleset=✨ Gemini,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list
+;ruleset=✨ Claude,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list
+ruleset=✨ AI,https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/AI.list
+ruleset=✨ Meta AI,https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/MetaAi.list
+ruleset=✨ Perplexity,https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Perplexity.list
+ruleset=📘 GitHub,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GitHub/GitHub.list
+ruleset=🪂 TikTok,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list
+ruleset=🙋 Telegram,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.list
+ruleset=🕊️ Twitter(X),https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.list
+ruleset=💁 WhatsApp,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Whatsapp/Whatsapp.list
+ruleset=🗣️ Facebook,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Facebook/Facebook.list
+ruleset=🌳 Amazon,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Amazon/Amazon.list
+ruleset=🍎 Apple,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.list
+ruleset=Ⓜ️ Microsoft,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.list
+ruleset=🔍 Google,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list
+ruleset=🎮 Steam,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.list
+ruleset=🕹️ Game,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.list
+ruleset=🕹️ Game,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EA/EA.list
+ruleset=🕹️ Game,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Blizzard/Blizzard.list
+ruleset=🕹️ Game,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/UBI/UBI.list
+ruleset=🕹️ Game,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Sony/Sony.list
+ruleset=🕹️ Game,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.list
+ruleset=🎞️ YouTube,https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/YouTube.list
+ruleset=🎞️ YouTube,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.list
+ruleset=📺 Disney,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.list
+ruleset=🎥 Netflix,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.list
+ruleset=🎬 HBO,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/HBO/HBO.list
+ruleset=🎵 Spotify,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.list
+ruleset=👌 虚拟币,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/OKX/OKX.list
+ruleset=👌 虚拟币,https://raw.githubusercontent.com/v2fly/domain-list-community/refs/heads/master/data/bybit
+ruleset=👌 虚拟币,https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/xnb.list
+ruleset=⏱️ 检测,https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Check.list
+ruleset=🌍 国外,https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Proxy.list
+ruleset=🌍 国外,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Global/Global.list
+ruleset=➡️ 国内,[]FINAL
+
+;2、策略组（域名组-节点组）
+custom_proxy_group=✈️ 流量光`select`[]香港-nonIEPL
+custom_proxy_group=📺 XPTV`select`[]DIRECT
+custom_proxy_group=📺 Judy-us`select`[]美国自动
+custom_proxy_group=📺 Judy-tw`select`[]台湾自动
+custom_proxy_group=🧍‍♂️ wogg`select`[]DIRECT
+custom_proxy_group=✨ AI`select`[]美国自动
+custom_proxy_group=✨ Meta AI`select`[]美国自动
+custom_proxy_group=✨ Perplexity`select`[]美国自动
+custom_proxy_group=📘 GitHub`select`[]香港-nonIEPL
+custom_proxy_group=🪂 TikTok`select`[]香港-nonIEPL
+custom_proxy_group=🙋 Telegram`select`[]香港-nonIEPL
+custom_proxy_group=🕊️ Twitter(X)`select`[]香港-nonIEPL
+custom_proxy_group=💁 WhatsApp`select`[]香港-nonIEPL
+custom_proxy_group=🗣️ Facebook`select`[]香港-nonIEPL
+custom_proxy_group=🌳 Amazon`select`[]香港-nonIEPL
+custom_proxy_group=🍎 Apple`select`[]DIRECT`[]香港-nonIEPL
+custom_proxy_group=Ⓜ️ Microsoft`select`[]DIRECT`[]香港-nonIEPL
+custom_proxy_group=🔍 Google`select`[]DIRECT`[]香港-nonIEPL
+custom_proxy_group=🎮 Steam`select`[]DIRECT`[]香港-nonIEPL
+custom_proxy_group=🕹️ Game`select`[]DIRECT`[]香港-nonIEPL
+custom_proxy_group=🎞️ YouTube`select`[]香港-nonIEPL
+custom_proxy_group=📺 Disney`select`[]香港-nonIEPL
+custom_proxy_group=🎥 Netflix`select`[]香港-nonIEPL
+custom_proxy_group=🎬 HBO`select`[]香港-nonIEPL
+custom_proxy_group=🎵 Spotify`select`[]香港-nonIEPL
+custom_proxy_group=👌 虚拟币`select`[]香港-nonIEPL
+custom_proxy_group=⏱️ 检测`select`[]DIRECT`[]香港-nonIEPL
+custom_proxy_group=🌍 国外`select`[]香港-nonIEPL
+custom_proxy_group=➡️ 国内`select`[]DIRECT
+
+
+;3、节点组
+custom_proxy_group=香港手动`url-test`(HK|HongKong|Hong Kong|香港)`http://www.gstatic.com/generate_204`180,5,100
+custom_proxy_group=香港IEPL`url-test`(HK IEPL|HongKong IEPL|Hong Kong IEPL|香港IEPL)`http://www.gstatic.com/generate_204`180,5,100
+custom_proxy_group=香港-nonIEPL`url-test`(HK|HongKong|Hong Kong|香港)(?!.*IEPL)`http://www.gstatic.com/generate_204`180,5,100
+custom_proxy_group=台湾自动`url-test`(TW|Taiwan|Tai wan|台湾)`http://www.gstatic.com/generate_204`180,5,100
+custom_proxy_group=美国自动`url-test`(US|UnitedStates|United States|America|美国)`http://www.gstatic.com/generate_204`180,5,100
+
+
+;4、启用规则集
+enable_rule_generator=true
+overwrite_original_rules=true
