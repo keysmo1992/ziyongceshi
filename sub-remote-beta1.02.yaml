@@ -56,8 +56,6 @@ ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/mast
 ruleset=🎯 全球直连,[]GEOIP,CN
 ruleset=🐟 漏网之鱼,[]FINAL
 
-
-
 ;设置分组标志位
 ;;常用分组标志位
 #custom_proxy_group=✈️ 流量光`select`[]香港-nonIEPL
