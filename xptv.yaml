@@ -76,7 +76,7 @@ DOMAIN,wjm.kemfsj.com
 #4k-av播放
 DOMAIN,www.4k-av.com
 #囧动漫主页
-IP-CIDR,43.142.232.217/32,,no-resolve
+IP-CIDR,43.142.232.217/32,no-resolve
 #播放
 DOMAIN-SUFFIX,fanchenstatic.com
 DOMAIN,i0.hdslb.com
@@ -84,8 +84,8 @@ DOMAIN-SUFFIX,bsgslb.cn
 DOMAIN-SUFFIX,bytetos.com
 DOMAIN-SUFFIX,douyinvod.com
 DOMAIN-SUFFIX,byteimg.com
-IP-CIDR,110.41.171.181/32,,no-resolve
-IP-CIDR,49.235.143.104/32,,no-resolve
+IP-CIDR,110.41.171.181/32,no-resolve
+IP-CIDR,49.235.143.104/32,no-resolve
 DOMAIN-SUFFIX,xhscdn.com
 DOMAIN-SUFFIX,bdxiguastatic.com
 DOMAIN-SUFFIX,zshtys888.com
