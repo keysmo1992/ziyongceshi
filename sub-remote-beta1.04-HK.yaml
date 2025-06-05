@@ -8,7 +8,7 @@
 ;增强国外GFW：支持
 ;显示IP归属地应用伪装：支持
 
-#ruleset=✈️ 流量光,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/proxy.yaml
+ruleset=✈️ 流量光,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/proxy.yaml
 ruleset=📺 Judy-us,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/judy-us.yaml
 ruleset=📺 Judy-tw,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/judy-TW.yaml
 ruleset=📺 XPTV,https://raw.githubusercontent.com/keysmo1992/ziyongceshi/refs/heads/main/xptv.yaml
@@ -58,7 +58,7 @@ ruleset=🐟 漏网之鱼,[]FINAL
 
 ;设置分组标志位
 ;;常用分组标志位
-#custom_proxy_group=✈️ 流量光`select`[]🇭🇰 Hong Kong
+custom_proxy_group=✈️ 流量光`select`[]🇭🇰 Hong Kong
 custom_proxy_group=📺 XPTV`select`[]DIRECT
 custom_proxy_group=📺 Judy-us`select`[]🇺🇲 United States
 custom_proxy_group=📺 Judy-tw`select`[]🇨🇳 Taiwan
