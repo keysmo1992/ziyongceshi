@@ -1,0 +1,14 @@
+# myTV SUPER 分流（香港专属）
+DOMAIN-SUFFIX,mytvsuper.com
+DOMAIN,ott-login.mytvsuper.com
+DOMAIN,api.mytvsuper.com
+DOMAIN,video-content.mytvsuper.com
+DOMAIN-SUFFIX,mytvn.com
+DOMAIN,streaming-ott.my-tv.tv
+DOMAIN-SUFFIX,tvb.com
+DOMAIN-KEYWORD,mytvsuper
+DOMAIN-KEYWORD,tvb
+DOMAIN-SUFFIX,edgesuite.net
+  # Akamai CDN
+DOMAIN-SUFFIX,akamaized.net
+  # 视频 CDN 回源
