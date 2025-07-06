@@ -1,14 +1,28 @@
 # myTV SUPER 分流（香港专属）
-DOMAIN-SUFFIX,mytvsuper.com
-DOMAIN,ott-login.mytvsuper.com
-DOMAIN,api.mytvsuper.com
-DOMAIN,video-content.mytvsuper.com
-DOMAIN-SUFFIX,mytvn.com
-DOMAIN,streaming-ott.my-tv.tv
-DOMAIN-SUFFIX,tvb.com
-DOMAIN-KEYWORD,mytvsuper
-DOMAIN-KEYWORD,tvb
-DOMAIN-SUFFIX,edgesuite.net
+DOMAIN,edge.api.brightcove.com
+DOMAIN,tvbtracking.azurewebsites.net
+DOMAIN,bigbigchannel.com.hk
+DOMAIN,bigbigshop.com
+DOMAIN,content.jwplatform.com
+DOMAIN,encoretvb.com
+DOMAIN,mytvsuper.com
+DOMAIN,mytvsuperlimited.hb.omtrdc.net
+DOMAIN,mytvsuperlimited.sc.omtrdc.net
+DOMAIN,tvb.com
+DOMAIN,tvb.com.au
+DOMAIN,tvbanywhere.com
+DOMAIN,tvbanywhere.com.sg
+DOMAIN,tvbc.com.cn
+DOMAIN,tvbeventpower.com.hk
+DOMAIN,tvbusa.com
+DOMAIN,tvbweekly.com
+DOMAIN,tvmedia.net.au
+DOMAIN,videos-f.jwpsrv.com
+DOMAIN,youboranqs01.com
+DOMAIN,tvmedia.net.au
+DOMAIN,tvmedia.net.au
+DOMAIN,edgeware.tvb.com
+
   # Akamai CDN
 DOMAIN-SUFFIX,akamaized.net
   # 视频 CDN 回源
